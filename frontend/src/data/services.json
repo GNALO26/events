@@ -1,0 +1,16 @@
+{
+  "ambiances": [
+    { "id": "boheme", "nom": "Bohème", "son": "/sounds/boheme.mp3" },
+    { "id": "romantique", "nom": "Romantique", "son": "/sounds/romantique.mp3" },
+    { "id": "contemporain", "nom": "Contemporain", "son": "/sounds/contemporain.mp3" },
+    { "id": "destination", "nom": "Destination", "son": "/sounds/destination.mp3" }
+  ],
+  "categories": [
+    { "id": "coordination", "nom": "Coordination", "icone": "...", "video": "...", "prix_base": 2500, "options": [{"nom": "Jour J", "prix": 1000}] },
+    ...
+  ],
+  "coefficients": {
+    "invites": { "seuil": 100, "supplement_par_invite": 30 },
+    "saison_haute": 1.2
+  }
+}
