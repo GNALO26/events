@@ -1,8 +1,8 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
-import { ThemeProvider } from './context/ThemeContext';
 
+// Lazy loading des pages
 const HomePage = lazy(() => import('./pages/HomePage'));
 const AgencePage = lazy(() => import('./pages/AgencePage'));
 const PrestationsPage = lazy(() => import('./pages/PrestationsPage'));
@@ -19,21 +19,19 @@ const LoadingFallback = () => (
 
 function App() {
   return (
-    <ThemeProvider>
-      <Suspense fallback={<LoadingFallback />}>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route path="agence" element={<AgencePage />} />
-            <Route path="prestations" element={<PrestationsPage />} />
-            <Route path="portfolio" element={<PortfolioPage />} />
-            <Route path="rendez-vous" element={<RendezVousPage />} />
-            <Route path="simulateur" element={<SimulateurPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </Suspense>
-    </ThemeProvider>
+    <Suspense fallback={<LoadingFallback />}>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="agence" element={<AgencePage />} />
+          <Route path="prestations" element={<PrestationsPage />} />
+          <Route path="portfolio" element={<PortfolioPage />} />
+          <Route path="rendez-vous" element={<RendezVousPage />} />
+          <Route path="simulateur" element={<SimulateurPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
 
