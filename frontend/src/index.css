@@ -23,6 +23,31 @@
   }
 }
 
+/* Safe area pour mobile */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .pt-safe {
+    padding-top: calc(5rem + env(safe-area-inset-top)); /* 5rem = h-20 */
+  }
+}
+
+/* Animation shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
+}
+
+/* Pulse lent */
+@keyframes pulse-slow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 165, 165, 0.4); }
+  50% { box-shadow: 0 0 0 15px rgba(212, 165, 165, 0); }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 2s infinite;
+}
+
 /* Réduction de mouvement */
 @media (prefers-reduced-motion: reduce) {
   *,

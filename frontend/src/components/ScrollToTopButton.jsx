@@ -6,9 +6,7 @@ const ScrollToTopButton = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setVisible(window.scrollY > 500);
-    };
+    const handleScroll = () => setVisible(window.scrollY > 500);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -23,7 +21,7 @@ const ScrollToTopButton = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 p-3 bg-champagne text-white rounded-full shadow-lg hover:bg-opacity-90 transition-all z-50"
+          className="fixed bottom-20 right-6 p-3 bg-blush text-white rounded-full shadow-lg hover:bg-opacity-90 transition-all z-30"
           aria-label="Retour en haut"
         >
           <ArrowUp size={24} />
