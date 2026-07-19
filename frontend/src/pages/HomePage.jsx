@@ -117,10 +117,10 @@ const HomePage = () => {
     <>
       <SEO title="Accueil" description="Ever After Events orchestre vos plus belles émotions..." />
       <div>
-        {/* Hero – padding réduit sur mobile pour éviter le blanc */}
+        {/* Hero – padding-top = hauteur de la navbar, la vidéo est ainsi collée à la barre */}
         <section className="relative min-h-[100svh] flex items-center">
           <BackgroundVideo videoSrc={HERO_VIDEO}>
-            <div className="max-w-4xl mx-auto px-4 text-center text-white py-12 md:py-32">
+            <div className="max-w-4xl mx-auto px-4 text-center text-white pt-16 md:pt-20 pb-12 md:pb-20">
               <motion.h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight mb-6">
                 {["Le premier jour", "du reste de votre vie", "commence ici."].map((phrase, i) => (
                   <motion.span
