@@ -21,7 +21,7 @@ const fadeInUp = {
   transition: { duration: 0.8, ease: "easeOut" },
 };
 
-// Statistiques masquées sur mobile pour éviter l'encombrement
+// Statistiques (masquées sur mobile)
 const stats = [
   { icon: <Heart size={32} />, value: 250, suffix: '+', label: 'Mariages organisés' },
   { icon: <Users size={32} />, value: 12, suffix: '', label: 'Années d\'expérience' },
@@ -76,6 +76,7 @@ const HomePage = () => {
     }
   };
 
+  // Compteur animé pour les statistiques
   const Counter = ({ value, suffix }) => {
     const controls = useAnimation();
     const [ref, inView] = useInView({ triggerOnce: true, margin: "-50px" });
@@ -101,6 +102,7 @@ const HomePage = () => {
   const nextTestimonial = () => setTestimonialIndex(prev => (prev + 1) % testimonials.length);
   const prevTestimonial = () => setTestimonialIndex(prev => (prev - 1 + testimonials.length) % testimonials.length);
 
+  // Refs pour les animations GSAP
   const aboutRef = useRef(null), servicesRef = useRef(null), testimonialsRef = useRef(null), contactRef = useRef(null);
 
   useGSAP(() => {
@@ -115,10 +117,10 @@ const HomePage = () => {
     <>
       <SEO title="Accueil" description="Ever After Events orchestre vos plus belles émotions..." />
       <div>
-        {/* Hero */}
+        {/* Hero – padding réduit sur mobile pour éviter le blanc */}
         <section className="relative min-h-[100svh] flex items-center">
           <BackgroundVideo videoSrc={HERO_VIDEO}>
-            <div className="max-w-4xl mx-auto px-4 text-center text-white py-16 md:py-32">
+            <div className="max-w-4xl mx-auto px-4 text-center text-white py-12 md:py-32">
               <motion.h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight mb-6">
                 {["Le premier jour", "du reste de votre vie", "commence ici."].map((phrase, i) => (
                   <motion.span
@@ -157,10 +159,10 @@ const HomePage = () => {
           </BackgroundVideo>
         </section>
 
-        {/* Compteur à rebours – visible sur mobile aussi */}
+        {/* Compteur à rebours */}
         <Countdown />
 
-        {/* Statistiques – masquées sur mobile (optionnel) */}
+        {/* Statistiques (masquées sur mobile) */}
         <section className="hidden md:block py-12 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
           <div className="max-w-5xl mx-auto px-4 grid grid-cols-3 gap-8 text-center">
             {stats.map((stat, idx) => (
@@ -258,18 +260,10 @@ const HomePage = () => {
                 </span>
               </motion.div>
               <div className="flex justify-center mt-6 space-x-4">
-                <button
-                  onClick={prevTestimonial}
-                  className="p-2 rounded-full border border-blush dark:border-gold text-blush dark:text-gold hover:bg-blush dark:hover:bg-gold hover:text-white dark:hover:text-anthracite transition-colors"
-                  aria-label="Témoignage précédent"
-                >
+                <button onClick={prevTestimonial} className="p-2 rounded-full border border-blush dark:border-gold text-blush dark:text-gold hover:bg-blush dark:hover:bg-gold hover:text-white dark:hover:text-anthracite transition-colors" aria-label="Témoignage précédent">
                   <ChevronLeft size={18} />
                 </button>
-                <button
-                  onClick={nextTestimonial}
-                  className="p-2 rounded-full border border-blush dark:border-gold text-blush dark:text-gold hover:bg-blush dark:hover:bg-gold hover:text-white dark:hover:text-anthracite transition-colors"
-                  aria-label="Témoignage suivant"
-                >
+                <button onClick={nextTestimonial} className="p-2 rounded-full border border-blush dark:border-gold text-blush dark:text-gold hover:bg-blush dark:hover:bg-gold hover:text-white dark:hover:text-anthracite transition-colors" aria-label="Témoignage suivant">
                   <ChevronRight size={18} />
                 </button>
               </div>
@@ -288,36 +282,19 @@ const HomePage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
                   <label htmlFor="nom" className="block text-sm font-medium mb-1 dark:text-gray-300">Nom complet *</label>
-                  <input
-                    type="text" name="nom" id="nom" required
-                    value={formData.nom} onChange={handleChange}
-                    className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blush focus:border-transparent outline-none dark:bg-gray-700 dark:text-white text-sm"
-                  />
+                  <input type="text" name="nom" id="nom" required value={formData.nom} onChange={handleChange} className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blush focus:border-transparent outline-none dark:bg-gray-700 dark:text-white text-sm" />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium mb-1 dark:text-gray-300">Email *</label>
-                  <input
-                    type="email" name="email" id="email" required
-                    value={formData.email} onChange={handleChange}
-                    className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blush focus:border-transparent outline-none dark:bg-gray-700 dark:text-white text-sm"
-                  />
+                  <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blush focus:border-transparent outline-none dark:bg-gray-700 dark:text-white text-sm" />
                 </div>
                 <div>
                   <label htmlFor="dateMariage" className="block text-sm font-medium mb-1 dark:text-gray-300">Date souhaitée</label>
-                  <input
-                    type="text" name="dateMariage" id="dateMariage"
-                    placeholder="Ex: Juin 2026"
-                    value={formData.dateMariage} onChange={handleChange}
-                    className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blush focus:border-transparent outline-none dark:bg-gray-700 dark:text-white text-sm"
-                  />
+                  <input type="text" name="dateMariage" id="dateMariage" placeholder="Ex: Juin 2026" value={formData.dateMariage} onChange={handleChange} className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blush focus:border-transparent outline-none dark:bg-gray-700 dark:text-white text-sm" />
                 </div>
                 <div>
                   <label htmlFor="styleRecherche" className="block text-sm font-medium mb-1 dark:text-gray-300">Style recherché</label>
-                  <select
-                    name="styleRecherche" id="styleRecherche"
-                    value={formData.styleRecherche} onChange={handleChange}
-                    className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blush focus:border-transparent outline-none text-sm"
-                  >
+                  <select name="styleRecherche" id="styleRecherche" value={formData.styleRecherche} onChange={handleChange} className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blush focus:border-transparent outline-none text-sm">
                     <option value="">-- Choisissez --</option>
                     <option value="Château">Château & Prestige</option>
                     <option value="Bohème">Bohème & Nature</option>
@@ -328,26 +305,13 @@ const HomePage = () => {
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium mb-1 dark:text-gray-300">Votre message</label>
-                <textarea
-                  name="message" id="message" rows="4"
-                  value={formData.message} onChange={handleChange}
-                  className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blush focus:border-transparent outline-none dark:bg-gray-700 dark:text-white text-sm"
-                  placeholder="Parlez-nous de votre vision..."
-                ></textarea>
+                <textarea name="message" id="message" rows="4" value={formData.message} onChange={handleChange} className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blush focus:border-transparent outline-none dark:bg-gray-700 dark:text-white text-sm" placeholder="Parlez-nous de votre vision..."></textarea>
               </div>
-              <button
-                type="submit"
-                disabled={submitStatus === 'loading'}
-                className="w-full sm:w-auto px-6 py-3 bg-blush text-white font-medium rounded-full hover:bg-opacity-90 transition-all disabled:opacity-70 text-sm"
-              >
+              <button type="submit" disabled={submitStatus === 'loading'} className="w-full sm:w-auto px-6 py-3 bg-blush text-white font-medium rounded-full hover:bg-opacity-90 transition-all disabled:opacity-70 text-sm">
                 {submitStatus === 'loading' ? 'Envoi...' : 'Envoyer ma demande'}
               </button>
-              {submitStatus === 'success' && (
-                <p className="text-green-500 text-sm mt-2">Message envoyé avec succès ! Nous revenons vers vous sous 48h.</p>
-              )}
-              {submitStatus === 'error' && (
-                <p className="text-red-500 text-sm mt-2">Une erreur est survenue. Veuillez réessayer.</p>
-              )}
+              {submitStatus === 'success' && <p className="text-green-500 text-sm mt-2">Message envoyé avec succès ! Nous revenons vers vous sous 48h.</p>}
+              {submitStatus === 'error' && <p className="text-red-500 text-sm mt-2">Une erreur est survenue. Veuillez réessayer.</p>}
             </form>
           </div>
         </section>

@@ -24,7 +24,7 @@ const Layout = () => {
         <IntroAnimation onFinish={() => setIntroDone(true)} />
       </Suspense>
       <Navbar />
-      <main className="flex-grow pt-safe">
+      <main className="flex-grow pt-16 md:pt-20">
         <AnimatePresence mode="wait">
           <motion.div key={location.pathname} variants={pageVariants} initial="initial" animate="animate" exit="exit">
             <Outlet />
