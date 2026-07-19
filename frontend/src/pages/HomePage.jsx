@@ -21,7 +21,6 @@ const fadeInUp = {
   transition: { duration: 0.8, ease: "easeOut" },
 };
 
-// Statistiques (masquées sur mobile)
 const stats = [
   { icon: <Heart size={32} />, value: 250, suffix: '+', label: 'Mariages organisés' },
   { icon: <Users size={32} />, value: 12, suffix: '', label: 'Années d\'expérience' },
@@ -76,7 +75,6 @@ const HomePage = () => {
     }
   };
 
-  // Compteur animé pour les statistiques
   const Counter = ({ value, suffix }) => {
     const controls = useAnimation();
     const [ref, inView] = useInView({ triggerOnce: true, margin: "-50px" });
@@ -102,7 +100,6 @@ const HomePage = () => {
   const nextTestimonial = () => setTestimonialIndex(prev => (prev + 1) % testimonials.length);
   const prevTestimonial = () => setTestimonialIndex(prev => (prev - 1 + testimonials.length) % testimonials.length);
 
-  // Refs pour les animations GSAP
   const aboutRef = useRef(null), servicesRef = useRef(null), testimonialsRef = useRef(null), contactRef = useRef(null);
 
   useGSAP(() => {
@@ -117,8 +114,8 @@ const HomePage = () => {
     <>
       <SEO title="Accueil" description="Ever After Events orchestre vos plus belles émotions..." />
       <div>
-        {/* Hero – padding-top = hauteur de la navbar, la vidéo est ainsi collée à la barre */}
-        <section className="relative min-h-[100svh] flex items-center">
+        {/* Hero – vidéo collée à la navbar */}
+        <section className="relative min-h-[100svh] flex flex-col justify-start">
           <BackgroundVideo videoSrc={HERO_VIDEO}>
             <div className="max-w-4xl mx-auto px-4 text-center text-white pt-16 md:pt-20 pb-12 md:pb-20">
               <motion.h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight mb-6">
