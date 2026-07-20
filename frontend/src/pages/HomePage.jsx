@@ -114,10 +114,10 @@ const HomePage = () => {
     <>
       <SEO title="Accueil" description="Ever After Events orchestre vos plus belles émotions..." />
       <div>
-        {/* Hero – vidéo collée à la navbar */}
-        <section className="relative min-h-[100svh] flex flex-col justify-start">
+        {/* Hero – vidéo collée à la navbar, aucun espace après */}
+        <section className="relative h-auto md:min-h-screen flex flex-col justify-start">
           <BackgroundVideo videoSrc={HERO_VIDEO}>
-            <div className="max-w-4xl mx-auto px-4 text-center text-white pt-16 md:pt-20 pb-12 md:pb-20">
+            <div className="max-w-4xl mx-auto px-4 text-center text-white pt-16 md:pt-20 pb-0">
               <motion.h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight mb-6">
                 {["Le premier jour", "du reste de votre vie", "commence ici."].map((phrase, i) => (
                   <motion.span

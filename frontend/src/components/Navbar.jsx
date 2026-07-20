@@ -31,7 +31,7 @@ const Navbar = () => {
     <header className="fixed top-0 left-0 w-full z-50 bg-cream dark:bg-anthracite shadow-sm transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 md:h-20">
         <Link to="/" className="text-xl md:text-2xl font-serif font-bold tracking-tight text-anthracite dark:text-gray-100 hover:text-blush dark:hover:text-gold transition-colors">
-          Ever After
+          Event After
         </Link>
 
         {/* Desktop nav */}
